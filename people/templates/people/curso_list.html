@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+<h2>Cursos</h2>
+<a href="{% url 'curso-create' %}">Novo Curso</a>
+<ul>
+    {% for curso in object_list %}
+    <li>
+        {{ curso.nome }} -
+        <a href="{% url 'curso-update' curso.pk %}">Editar</a> |
+        <a href="{% url 'curso-delete' curso.pk %}">Deletar</a>
+    </li>
+    {% empty %}
+    <li>Nenhum curso cadastrado.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

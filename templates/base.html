@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Sistema Django{% endblock %}</title>
+    <style>
+      header, footer { background: #333; color: white; padding: 1em; text-align: center; }
+      main { margin: 2em; }
+      a { color: #06c; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema Escolar Padrão Foda-se</h1>
+        <nav>
+            <a href="{% url 'curso-list' %}">Cursos</a> |
+            <a href="{% url 'aluno-list' %}">Alunos</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Meu Sistema</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Deletar Curso{% endblock %}
+
+{% block content %}
+<h2>Tem certeza que deseja deletar o curso "{{ object.nome }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'curso-list' %}">Cancelar</a>
+</form>
+{% endblock %}
