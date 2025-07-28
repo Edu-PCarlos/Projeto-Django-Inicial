@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Formulário Curso{% endblock %}
+{% block title %}{{ view.object.pk|yesno:"Editar Curso,Novo Curso" }}{% endblock %}
 
 {% block content %}
-<h2>{% if object %}Editar Curso{% else %}Novo Curso{% endif %}</h2>
-<form method="post">
+  <h2>{{ view.object.pk|yesno:"Editar Curso,Novo Curso" }}</h2>
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
-<a href="{% url 'curso-list' %}">Voltar para lista</a>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'curso-list' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
 {% endblock %}

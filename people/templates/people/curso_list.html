@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
 
-{% block title %}Cursos{% endblock %}
+{% block title %}Cursos Cadastrados{% endblock %}
 
 {% block content %}
-<h2>Cursos</h2>
-<a href="{% url 'curso-create' %}">Novo Curso</a>
-<ul>
-    {% for curso in object_list %}
-    <li>
-        {{ curso.nome }} -
-        <a href="{% url 'curso-update' curso.pk %}">Editar</a> |
-        <a href="{% url 'curso-delete' curso.pk %}">Deletar</a>
-    </li>
-    {% empty %}
-    <li>Nenhum curso cadastrado.</li>
-    {% endfor %}
-</ul>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">Cursos Cadastrados</h2>
+    <a href="{% url 'curso-create' %}" class="btn btn-success">
+        + Novo Curso
+    </a>
+</div>
+
+<table class="table table-bordered shadow-sm">
+    <thead class="table-secondary">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in object_list %}
+        <tr>
+            <td>{{ curso.nome }}</td>
+            <td>{{ curso.descricao }}</td>
+            <td>
+                <a href="{% url 'curso-update' curso.pk %}" class="btn btn-sm btn-outline-primary me-2">Editar</a>
+                <a href="{% url 'curso-delete' curso.pk %}" class="btn btn-sm btn-outline-danger">Deletar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhum curso cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
