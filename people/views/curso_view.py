@@ -4,7 +4,7 @@ from people.models import Curso
 
 class CursoListView(ListView):
     model = Curso
-    template_name = 'people/curso_list.html'  # template da listagem
+    template_name = 'people/curso_list.html' 
 
 class CursoCreateView(CreateView):
     model = Curso

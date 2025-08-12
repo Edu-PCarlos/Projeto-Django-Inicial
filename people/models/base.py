@@ -11,13 +11,11 @@ User = get_user_model()
 def get_sentinel_user():
     return get_user_model().objects.get_or_create(email="deleted")[0]
 
-
 class UUIDModel(models.Model):
     uuid = models.UUIDField(unique=True, editable=False, default=uuid.uuid4)
 
     class Meta:
         abstract = True
-
 
 class CreationTimestampedModel(models.Model):
     created_at = models.DateTimeField(
